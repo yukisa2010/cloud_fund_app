@@ -5,8 +5,8 @@ on:
 
 env:
   RAILS_ENV: test
-#  DATABASE_URL: "postgres://postgres:password@localhost:5432/cloud_fund_app_test"
-#  TZ: 'Asia/Tokyo'
+  DATABASE_URL: "postgres://postgres:password@localhost:5432/cloud_fund_app_test"
+  TZ: 'Asia/Tokyo'
 
 jobs:
   test:
@@ -18,7 +18,7 @@ jobs:
         ports:
           - 5432:5432
         env:
-#          POSTGRES_USER: postgres
+          POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: cloud_fund_app_test
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
