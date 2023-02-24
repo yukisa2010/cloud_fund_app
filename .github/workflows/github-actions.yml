@@ -9,7 +9,7 @@ env:
   TZ: 'Asia/Tokyo'
 
 jobs:
-  rspec:
+  test:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     services:
