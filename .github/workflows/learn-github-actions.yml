@@ -39,11 +39,6 @@ jobs:
         with:
           ruby-version: 3.1.2
 
-      #     - name: Set up node
-      #       uses: actions/setup-node@v1
-      #       with:
-      #         node-version: '12'
-
       - name: Install dependent libralies
         run: sudo apt-get install libpq-dev
 
@@ -69,18 +64,13 @@ jobs:
           bundle config path vendor/bundle
           bundle install --jobs 4 --retry 3
 
-      #     - name: yarn install
-      #       run: |
-      #         yarn install
-
-      #     - name: webpacker compile
-      #       run: |
-      #         bundle exec rails webpacker:compile
-
       - name: Setup Database
         run: |
           bundle exec rake db:create
           bundle exec rake db:schema:load
+
+      - name: install tailwind css
+        run: bundle exec rails tailwindcss:install
 
       - name: Run rspec
         run: bundle exec rspec  --require rails_helper
