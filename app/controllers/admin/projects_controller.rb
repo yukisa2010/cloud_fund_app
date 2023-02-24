@@ -2,7 +2,7 @@ class Admin::ProjectsController < Admin::BaseController
   before_action :set_project, only: %i[edit update destroy]
 
   def index
-    @projects = Project.all.order(:id)
+    @projects = Project.order(:id)
   end
 
   def edit
