@@ -3,10 +3,10 @@ name: Rails App Ci
 on:
   push:
 
-env:
-  RAILS_ENV: test
-  DATABASE_URL: "postgres://postgres:password@localhost:5432/cloud_fund_app_test"
-  TZ: 'Asia/Tokyo'
+#env:
+#  RAILS_ENV: test
+#  DATABASE_URL: "postgres://postgres:password@localhost:5432/cloud_fund_app_test"
+#  TZ: 'Asia/Tokyo'
 
 jobs:
   test:
