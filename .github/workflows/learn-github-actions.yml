@@ -9,7 +9,7 @@ env:
   TZ: 'Asia/Tokyo'
 
 jobs:
-  test:
+  rspec:
     runs-on: ubuntu-latest
 
     services:
