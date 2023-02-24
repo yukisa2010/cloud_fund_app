@@ -11,7 +11,7 @@ env:
 jobs:
   test:
     runs-on: ubuntu-latest
-#    timeout-minutes: 10
+
     services:
       postgres:
         image: postgres:12
@@ -24,7 +24,6 @@ jobs:
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
-      - name: Checkout code
       - uses: actions/checkout@v2
 
       - name: Set up Ruby
@@ -59,18 +58,3 @@ jobs:
 
       - name: Run rspec
         run: bundle exec rspec  --require rails_helper
-
-#  rubocop:
-#    runs-on: ubuntu-latest
-#    timeout-minutes: 10
-#    steps:
-#      - name: Checkout code
-#        uses: actions/checkout@v2
-#
-#      - name: Set up Ruby
-#        uses: ruby/setup-ruby@v1
-#        with:
-#          bundler-cache: true
-#
-#      - name: Run rubocop
-#        run: bundle exec rubocop
