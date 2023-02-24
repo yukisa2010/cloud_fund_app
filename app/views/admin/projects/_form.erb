@@ -1,0 +1,20 @@
+<%= form_with model: [:admin, object] do |form| %>
+  <div>
+    <%= render 'shared/error_messages', object: object %>
+  </div>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+  <div>
+    <%= form.label :user_id %>
+    <%= form.select :user_id, User.pluck(:email, :id), include_blank: true %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
