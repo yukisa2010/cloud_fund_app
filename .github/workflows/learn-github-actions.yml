@@ -14,23 +14,15 @@ jobs:
 
     services:
       postgres:
-        image: postgres:12
-        ports:
-          - 5432:5432
+        image: postgres
+#        ports:
+#          - 5432:5432
         env:
-          POSTGRES_USER: postgres
+#          POSTGRES_USER: postgres
           POSTGRES_PASSWORD: password
-          POSTGRES_DB: myapp_test
+#          POSTGRES_DB: myapp_test
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
-    #       redis:
-    #         image: redis:alpine
-    #         ports:
-    #           - 6379:6379
-    #         options: --health-cmd "redis-cli -h localhost ping" --health-interval 10s --health-timeout 5s --health-retries 15
-    #         env:
-    #           REDIS_HOST: redis
-    #           REDIS_PORT: 6379
     steps:
       - uses: actions/checkout@v2
 
@@ -49,14 +41,6 @@ jobs:
           key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
           restore-keys: |
             ${{ runner.os }}-gem-
-
-      #     - name: Cache Npm
-      #       uses: actions/cache@v2
-      #       with:
-      #         path: ~/.npm
-      #         key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-      #         restore-keys: |
-      #           ${{ runner.os }}-node-
 
       - name: bundler
         run: |
