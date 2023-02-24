@@ -54,6 +54,7 @@ gem "bootsnap", require: false
 gem 'devise', '~> 4.9'
 gem 'seed-fu', '~> 2.3', '>= 2.3.9'
 gem 'rspec-rails', '~> 6.0', '>= 6.0.1'
+gem 'factory_bot_rails', '~> 6.2'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
