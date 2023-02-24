@@ -11,4 +11,9 @@ Rails.application.routes.draw do
   end
 
   resources :dashboards, only: :index
+  resources :projects, only: %i[index show]
+
+  namespace :admin do
+    resources :projects, except: :show
+  end
 end

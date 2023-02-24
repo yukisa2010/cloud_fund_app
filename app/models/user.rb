@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   enum status: { normal: 0, admin: 1 }
+
+  has_many :projects
 end
