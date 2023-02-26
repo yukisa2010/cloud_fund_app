@@ -1,0 +1,33 @@
+<table>
+  <tr>
+    <th>id</th>
+    <th>name</th>
+    <% if namespace == :admin %>
+      <th>user</th>
+    <% end %>
+    <th></th>
+  </tr>
+  <% projects.each do |project| %>
+    <tr>
+      <td><%= project.id %></td>
+      <td><%= project.name %></td>
+      <% if namespace == :admin %>
+        <td><%= project.user.email %></td>
+      <% end %>
+      <td>
+        <% if namespace == :admin %>
+          <%= link_to '編集', edit_admin_project_path(project) %>
+          <%= button_to '削除', admin_project_path(project), method: :delete, form: { data: { turbo_confirm: 'r u sure?' } } %>
+        <% elsif namespace == :users %>
+          <%= link_to '編集', edit_users_project_path(project) %>
+          <%= button_to '削除', users_project_path(project), method: :delete, form: { data: { turbo_confirm: 'r u sure?' } } %>
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+<style>
+    table, td, th {
+        border: 2px solid black;
+    }
+</style>

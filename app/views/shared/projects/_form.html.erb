@@ -1,0 +1,22 @@
+<%= form_with model: [namespace, project] do |form| %>
+  <div>
+    <%= render 'shared/error_messages', object: project %>
+  </div>
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+  <% if namespace == :admin %>
+    <div>
+      <%= form.label :user_id %>
+      <%= form.select :user_id, User.pluck(:email, :id), include_blank: true %>
+    </div>
+  <% end %>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,7 @@
+<div>
+  <%= link_to '新規プロジェクト作成', new_users_project_path %>
+</div>
+
+<div>
+  <%= render 'shared/projects/table', projects: @projects, namespace: :users %>
+</div>
