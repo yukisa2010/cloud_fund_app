@@ -11,10 +11,21 @@
   </head>
 
   <body>
+    <% if current_user&.admin? %>
+      <%= render 'layouts/admin_layout' %>
+    <% else %>
+      <%= render 'layouts/layout' %>
+    <% end %>
+
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <main class="container mx-auto mt-28 px-5 flex">
+
+    <div style="display: flex;">
+      <% if current_user&.admin? %>
+        <%= render 'layouts/side_bar' %>
+      <% end %>
+
       <%= yield %>
-    </main>
+    </div>
   </body>
 </html>

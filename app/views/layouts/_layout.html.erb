@@ -1,0 +1,12 @@
+<div style="background-color: #111;color: #eee;display:flex;justify-content: space-between;">
+  <div>
+    <h1><%= user_signed_in? ? 'Normal Layout' : 'Not Signed in' %></h1>
+  </div>
+  <div>
+    <% if user_signed_in? %>
+      <%= button_to 'Log out', destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= link_to 'Sign in', new_user_session_path %>
+    <% end %>
+  </div>
+</div>
