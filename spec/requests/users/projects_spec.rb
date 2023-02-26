@@ -31,29 +31,55 @@ RSpec.describe 'Users::Projects', type: :request do
   end
 
   describe 'POST /users/projects' do
-    let(:params) { { project: { name: 'name', description: 'description' } } }
+    context '正常系' do
+      let(:params) { { project: { name: 'name', description: 'description' } } }
 
-    it '新規作成できること' do
-      expect { post users_projects_path, params: params }.to change(Project, :count).by(1)
-      expect(response).to redirect_to users_projects_path
+      it '新規作成できること' do
+        expect { post users_projects_path, params: params }.to change(Project, :count).by(1)
+        expect(response).to redirect_to users_projects_path
+      end
+    end
+
+    context '異常系' do
+      context 'invalidな値を渡した場合' do
+        let(:params) { { project: { name: '', description: 'description' } } }
+
+        it '新規作成されないこと' do
+          expect { post users_projects_path, params: params }.to change(Project, :count).by(0)
+        end
+      end
     end
   end
 
   describe 'PATCH /users/projects/:id' do
-    let!(:project) { create(:project, name: 'test name', user: user) }
-    let(:params) { { project: { name: 'updated name' } } }
+    let!(:project) { create(:project, name: 'test name', description: 'description', user: user) }
 
-    it '更新できること' do
-      patch users_project_path(project), params: params
-      expect(project.reload.name).to eq 'updated name'
-      expect(response).to redirect_to edit_users_project_path(project)
+    context '正常系' do
+      let(:params) { { project: { name: 'updated name', description: 'description' } } }
+
+      it '更新できること' do
+        patch users_project_path(project), params: params
+        expect(project.reload.name).to eq 'updated name'
+        expect(response).to redirect_to edit_users_project_path(project)
+      end
+    end
+
+    context '異常系' do
+      context 'invalidな値が渡された場合' do
+        let(:params) { { project: { name: '', description: 'description' } } }
+
+        it '更新できないこと' do
+          patch users_project_path(project), params: params
+          expect(project.reload.name).to eq 'test name'
+        end
+      end
     end
   end
 
   describe 'DELETE /users/projects/:id' do
     let!(:project) { create(:project, user: user) }
 
-    it '更新できること' do
+    it '削除できること' do
       expect{
         delete users_project_path(project)
       }.to change(Project, :count).by(-1)
