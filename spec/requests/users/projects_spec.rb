@@ -14,12 +14,28 @@ RSpec.describe 'Users::Projects', type: :request do
     end
   end
 
+  describe 'GET /new' do
+    it 'アクセスできること' do
+      get new_users_project_path
+      expect(response).to have_http_status(:success)
+    end
+  end
+
   describe 'GET /edit' do
     let!(:project) { create(:project, user: user) }
 
     it 'アクセスできること' do
       get edit_users_project_path(project)
       expect(response).to have_http_status(:success)
+    end
+  end
+
+  describe 'POST /users/projects' do
+    let(:params) { { project: { name: 'name', description: 'description' } } }
+
+    it '新規作成できること' do
+      expect { post users_projects_path, params: params }.to change(Project, :count).by(1)
+      expect(response).to redirect_to users_projects_path
     end
   end
 
