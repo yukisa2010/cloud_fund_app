@@ -16,4 +16,8 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :projects, except: :show
   end
+
+  namespace :users do
+    resources :projects, except: %i[show]
+  end
 end
