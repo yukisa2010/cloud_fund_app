@@ -10,7 +10,7 @@
       <tr>
         <td><%= project.id %></td>
         <td><%= project.name %></td>
-        <td><%= project.investments_total %></td>
+        <td><%= "#{project.investments_total} / #{project.target_amount}" %></td>
         <td>
           <%= link_to '詳細', project_path(project) %>
         </td>
