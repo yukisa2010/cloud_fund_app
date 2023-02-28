@@ -11,7 +11,11 @@ Rails.application.routes.draw do
   end
 
   resources :dashboards, only: :index
-  resources :projects, only: %i[index show]
+  resources :projects, only: %i[index show] do
+    member do
+      resource :investment, only: %i[new create], module: :projects
+    end
+  end
 
   namespace :admin do
     resources :projects, except: :show

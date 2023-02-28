@@ -1,0 +1,9 @@
+<%= form_with model: @investment, url: investment_path(@project) do |form| %>
+  <div>
+    <%= form.label :amount %>
+    <%= form.number_field :amount %>
+  </div>
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

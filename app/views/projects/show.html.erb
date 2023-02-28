@@ -1,5 +1,9 @@
 <div>
   <h1>プロジェクト詳細</h1><br/>
   id: <%= @project.id %><br/>
-  name: <%= @project.name %>
+  name: <%= @project.name %><br/>
+  investment_total: <%= @project.investments_total %>
+  <div>
+    <%= link_to '投資フォームへ', new_investment_path(@project) %>
+  </div>
 </div>

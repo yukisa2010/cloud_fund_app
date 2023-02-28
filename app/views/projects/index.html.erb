@@ -3,12 +3,14 @@
     <tr>
       <th>id</th>
       <th>name</th>
+      <th>investment_total</th>
       <th></th>
     </tr>
     <% @projects.each do |project| %>
       <tr>
         <td><%= project.id %></td>
         <td><%= project.name %></td>
+        <td><%= project.investments_total %></td>
         <td>
           <%= link_to '詳細', project_path(project) %>
         </td>
