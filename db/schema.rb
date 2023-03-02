@@ -10,9 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_23_103311) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_28_124333) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "investments", force: :cascade do |t|
+    t.integer "amount", default: 0, null: false
+    t.bigint "user_id", null: false
+    t.bigint "project_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_investments_on_project_id"
+    t.index ["user_id"], name: "index_investments_on_user_id"
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.integer "amount", default: 0
+    t.bigint "user_id", null: false
+    t.bigint "project_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_payments_on_project_id"
+    t.index ["user_id"], name: "index_payments_on_user_id"
+  end
 
   create_table "projects", force: :cascade do |t|
     t.string "name", null: false
@@ -20,6 +40,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_23_103311) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "target_amount", default: 0, null: false
     t.index ["user_id"], name: "index_projects_on_user_id"
   end
 
@@ -36,5 +57,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_23_103311) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "investments", "projects"
+  add_foreign_key "investments", "users"
+  add_foreign_key "payments", "projects"
+  add_foreign_key "payments", "users"
   add_foreign_key "projects", "users"
 end

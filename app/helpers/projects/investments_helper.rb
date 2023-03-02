@@ -1,0 +1,2 @@
+module Projects::InvestmentsHelper
+end

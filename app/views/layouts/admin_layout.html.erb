@@ -21,6 +21,12 @@
     <p class="alert"><%= alert %></p>
 
     <div style="display: flex;">
+      <div style="width: 200px; background-color: lightblue;">
+        <ul>
+          <li><%= link_to 'プロジェクト管理', admin_projects_path %></li>
+        </ul>
+      </div>
+
       <%= yield %>
     </div>
   </body>

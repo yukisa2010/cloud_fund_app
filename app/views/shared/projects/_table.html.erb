@@ -5,6 +5,7 @@
     <% if namespace == :admin %>
       <th>user</th>
     <% end %>
+    <th>investments</th>
     <th></th>
   </tr>
   <% projects.each do |project| %>
@@ -14,6 +15,7 @@
       <% if namespace == :admin %>
         <td><%= project.user.email %></td>
       <% end %>
+      <td><%= "#{project.investments_total} / #{project.target_amount}" %></td>
       <td>
         <% if namespace == :admin %>
           <%= link_to '編集', edit_admin_project_path(project) %>
