@@ -11,7 +11,7 @@ class Project < ApplicationRecord
     investments.sum(:amount)
   end
 
-  def investable?(user)
+  def owner?(user)
     self.user == user
   end
 end

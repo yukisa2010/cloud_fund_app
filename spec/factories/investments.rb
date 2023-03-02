@@ -1,7 +1,7 @@
 FactoryBot.define do
   factory :investment do
-    amount { 1 }
-    user { nil }
-    project { nil }
+    amount { 1_000 }
+    user
+    project
   end
 end
