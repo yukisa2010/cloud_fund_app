@@ -59,6 +59,7 @@ gem 'factory_bot_rails', '~> 6.2'
 gem 'dotenv-rails'
 gem 'fog-aws'
 gem 'carrierwave'
+gem 'aws-sdk-s3', '~> 1.2'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
