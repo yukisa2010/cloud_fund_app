@@ -45,6 +45,6 @@ class Admin::ProjectsController < Admin::BaseController
   end
 
   def project_params
-    params.require(:project).permit(:name, :description, :user_id)
+    params.require(:project).permit(:name, :description, :image, :user_id)
   end
 end
