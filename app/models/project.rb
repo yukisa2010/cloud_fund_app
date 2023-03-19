@@ -7,6 +7,7 @@ class Project < ApplicationRecord
   validates :name,
             :description, presence: true
 
+  mount_uploader :image, ImageUploader
   def investments_total
     investments.sum(:amount)
   end

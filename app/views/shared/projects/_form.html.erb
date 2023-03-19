@@ -10,6 +10,13 @@
     <%= form.label :description %>
     <%= form.text_field :description %>
   </div>
+  <div>
+    <%= form.label :image %>
+    <%= form.file_field :image, accept: 'image/*' %>
+  </div>
+  <div>
+    <%= image_tag @project.image.url, class: "board-images" if @project.present? %>
+  </div>
   <% if namespace == :admin %>
     <div>
       <%= form.label :user_id %>
