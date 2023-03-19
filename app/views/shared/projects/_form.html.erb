@@ -15,7 +15,7 @@
     <%= form.file_field :image, accept: 'image/*' %>
   </div>
   <div>
-    <%= image_tag @project.image.url, class: "board-images" if @project.present? %>
+    <%= image_tag @project.image.url, class: "board-images" if @project.image.present? %>
   </div>
   <% if namespace == :admin %>
     <div>
